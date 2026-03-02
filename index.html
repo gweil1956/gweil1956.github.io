@@ -231,7 +231,7 @@
 
         .media-item img {
             width: 100%;
-            height: 200px;
+            height: 332px;
             object-fit: cover;
             display: block;
         }
@@ -239,7 +239,7 @@
         /* Placeholder when no image is attached */
         .media-placeholder {
             width: 100%;
-            height: 200px;
+            height: 332px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -486,9 +486,9 @@
         <p class="tagline">Electrical Engineering <span>/</span> Photonics <span>/</span> RF & Microwave Engineering</p>
         <p class="header-blurb">Pursuing electrical engineering with a focus on photonics and microwave engineering, with developing expertise in electromagnetic simulation, waveguide design, photonic device characterization, and experimental test and analysis.</p>
         <div class="header-contact">
-            <a href="mailto:glennweil322@gmail.com">glennweil322@gmail.com</a>
+            <a href="/cdn-cgi/l/email-protection#187f747d76766f7d71742b2a2a587f75797174367b7775"><span class="__cf_email__" data-cfemail="e0878c858e8e9785898cd3d2d2a0878d81898cce838f8d">[email&#160;protected]</span></a>
             <span class="header-sep">·</span>
-            <a href="www.linkedin.com/in/glenn-weil-0b9a28223" target="_blank">LinkedIn</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
         </div>
     </div>
 </header>
@@ -525,12 +525,20 @@
                 <!-- Media Grid -->
                 <div class="media-grid">
                     <div class="media-item">
-                        <img src="microring_efield.png" alt="Whispering gallery mode field profile in microring resonator" style="width:100%;height:200px;object-fit:cover;display:block;">
-                        <div class="media-caption">Fig. 1 — |E| field monitor at resonance: optical mode circulating in Si ring, with coupling into both bus waveguides</div>
+                        <div class="media-placeholder" title="Click to upload image">
+                            <input type="file" accept="image/*" onchange="loadImage(this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                            <span>Geometry</span>
+                        </div>
+                        <div class="media-caption">Fig. 1 — Tidy3D top-view XY geometry of microring and bus waveguides</div>
                     </div>
                     <div class="media-item">
-                        <img src="microring_spectrum.png" alt="Drop port transmission spectrum showing periodic resonance peaks" style="width:100%;height:200px;object-fit:cover;display:block;">
-                        <div class="media-caption">Fig. 2 — Drop port transmission (dB) vs. wavelength (1.5–1.6 µm); resonance peaks spaced by ~20 nm FSR</div>
+                        <img src="microring_efield.png" alt="Field profile in microring resonator" style="width:100%;height:332px;object-fit:cover;display:block;">
+                        <div class="media-caption">Fig. 2 — |E| field monitor at resonance: optical mode circulating in Si ring, with coupling into both bus waveguides</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="microring_spectrum.png" alt="Drop port transmission spectrum showing periodic resonance peaks" style="width:100%;height:332px;object-fit:contain;display:block;background:var(--surface-2);">
+                        <div class="media-caption">Fig. 3 — Drop port transmission (dB) vs. wavelength (1.5–1.6 µm); resonance peaks spaced by ~20 nm FSR</div>
                     </div>
                 </div>
 
@@ -578,11 +586,11 @@
                 <!-- Media Grid -->
                 <div class="media-grid">
                     <div class="media-item">
-                        <img src="edge_coupler_geometry.png" alt="Tidy3D top-view XY geometry of edge coupler taper" style="width:100%;height:200px;object-fit:cover;display:block;">
+                        <img src="edge_coupler_geometry.png" alt="Tidy3D top-view XY geometry of edge coupler taper" style="width:100%;height:332px;object-fit:cover;display:block;">
                         <div class="media-caption">Fig. 1 — Tidy3D top-view XY geometry: SiO₂ cladding (yellow), Si taper 350 → 500 nm over 5 µm (pink)</div>
                     </div>
                     <div class="media-item">
-                        <img src="edge_coupler_modes.png" alt="Coupling efficiency vs wavelength for all 5 output modes" style="width:100%;height:200px;object-fit:cover;display:block;">
+                        <img src="edge_coupler_modes.png" alt="Coupling efficiency vs wavelength for all 5 output modes" style="width:100%;height:332px;object-fit:contain;display:block;background:var(--surface-2);">
                         <div class="media-caption">Fig. 2 — Coupling efficiency (dB) vs. wavelength (760–840 nm) for modes 0–4; mode 0 dominates near 0 dB</div>
                     </div>
                 </div>
@@ -620,11 +628,7 @@
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Simple image uploader for placeholders
     function loadImage(input) {
-        if (!input.files || !input.files[0]) return;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const placeholder = input.closest('.media-placeholder');
-            const mediaItem = placeholder.closest('.media
+        i
