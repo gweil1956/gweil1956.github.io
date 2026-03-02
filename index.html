@@ -39,7 +39,7 @@
         header {
             background: var(--ink);
             color: var(--bg);
-            padding: 72px 0 56px;
+            padding: 44px 0 36px;
             position: relative;
             overflow: hidden;
         }
@@ -67,10 +67,10 @@
         header h1 {
             font-family: var(--serif);
             font-weight: 300;
-            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             letter-spacing: 0.01em;
             line-height: 1.1;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         header .tagline {
@@ -132,7 +132,7 @@
 
         /* ── SECTION ── */
         .section {
-            padding-top: 72px;
+            padding-top: 40px;
         }
 
         .section-header {
@@ -394,16 +394,87 @@
             font-size: 0.9rem;
         }
 
+        .header-contact {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: fit-content;
+        }
+
+        .header-contact a {
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .header-contact a:hover {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .header-sep {
+            color: rgba(255,255,255,0.2);
+        }
+
+        .header-blurb {
+            margin-top: 10px;
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.48);
+            max-width: 560px;
+            line-height: 1.75;
+        }
+
         /* ── FOOTER ── */
         footer {
             border-top: 1px solid var(--rule);
             padding: 32px 40px;
-            text-align: center;
             font-family: var(--mono);
             font-size: 0.7rem;
             letter-spacing: 0.08em;
             color: var(--ink-faint);
             text-transform: uppercase;
+        }
+
+        .footer-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-name {
+            color: var(--ink-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: var(--ink-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-sep {
+            color: var(--ink-faint);
         }
     </style>
 </head>
@@ -412,17 +483,17 @@
 <header>
     <div class="header-inner">
         <h1>Glenn Weil</h1>
-        <p class="tagline">Electrical Engineering <span>/</span> Photonics <span>/</span> Embedded Systems</p>
+        <p class="tagline">Electrical Engineering <span>/</span> Photonics <span>/</span> RF & Microwave Engineering</p>
+        <p class="header-blurb">Pursuing electrical engineering with a focus on photonics and microwave engineering, with developing expertise in electromagnetic simulation, waveguide design, photonic device characterization, and experimental test and analysis.</p>
+        <div class="header-contact">
+            <a href="mailto:glennweil322@gmail.com">glennweil322@gmail.com</a>
+            <span class="header-sep">·</span>
+            <a href="www.linkedin.com/in/glenn-weil-0b9a28223" target="_blank">LinkedIn</a>
+        </div>
     </div>
 </header>
 
-<nav>
-    <ul>
-        <li><a href="#photonics">Photonics</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
+
 
 <main>
 
@@ -435,45 +506,31 @@
             <span class="section-label">Silicon Photonics Design</span>
         </div>
 
-        <!-- PROJECT 1: Y-SPLITTER -->
+        <!-- PROJECT 1: MICRORING RESONATOR -->
         <div class="project-card">
             <div class="project-header">
-                <h3>Y-Junction Splitter</h3>
-                <span class="project-tag">Passive Component</span>
+                <h3>Microring Resonator</h3>
+                <span class="project-tag">Resonant Filter</span>
             </div>
             <div class="project-body">
                 <p class="project-description">
-                    Design and simulation of a silicon-on-insulator Y-junction power splitter. The device achieves
-                    near-equal 3 dB splitting across a broad wavelength range through optimized branching angle and
-                    taper geometry. FDTD and EME simulations were used to characterize insertion loss, back-reflection,
-                    and splitting uniformity.
+                    Add-drop microring resonator simulated on a silicon-on-insulator platform using Tidy3D FDTD.
+                    A silicon ring (radius 4 µm, width 400 nm) is evanescently coupled to two parallel bus waveguides
+                    with a 150 nm gap. A broadband Gaussian mode source launched from the input port drives resonances
+                    across the 1.5–1.6 µm telecom band. Flux monitors at the through and drop ports capture the
+                    transmission spectrum, revealing periodic resonance dips with ~25–27 dB extinction and a
+                    free spectral range of approximately 20 nm.
                 </p>
 
-                <!-- Media Grid: swap src="" with your image paths -->
+                <!-- Media Grid -->
                 <div class="media-grid">
                     <div class="media-item">
-                        <div class="media-placeholder" title="Click to upload image">
-                            <input type="file" accept="image/*" onchange="loadImage(this)">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                            <span>Device Layout</span>
-                        </div>
-                        <div class="media-caption">Fig. 1 — Top-view device layout</div>
+                        <img src="microring_efield.png" alt="Whispering gallery mode field profile in microring resonator" style="width:100%;height:200px;object-fit:cover;display:block;">
+                        <div class="media-caption">Fig. 1 — |E| field monitor at resonance: optical mode circulating in Si ring, with coupling into both bus waveguides</div>
                     </div>
                     <div class="media-item">
-                        <div class="media-placeholder" title="Click to upload image">
-                            <input type="file" accept="image/*" onchange="loadImage(this)">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                            <span>E-Field Plot</span>
-                        </div>
-                        <div class="media-caption">Fig. 2 — Simulated E-field distribution</div>
-                    </div>
-                    <div class="media-item">
-                        <div class="media-placeholder" title="Click to upload image">
-                            <input type="file" accept="image/*" onchange="loadImage(this)">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                            <span>Transmission Graph</span>
-                        </div>
-                        <div class="media-caption">Fig. 3 — Transmission vs. wavelength</div>
+                        <img src="microring_spectrum.png" alt="Drop port transmission spectrum showing periodic resonance peaks" style="width:100%;height:200px;object-fit:cover;display:block;">
+                        <div class="media-caption">Fig. 2 — Drop port transmission (dB) vs. wavelength (1.5–1.6 µm); resonance peaks spaced by ~20 nm FSR</div>
                     </div>
                 </div>
 
@@ -487,23 +544,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Platform</td><td>SOI 220 nm</td><td>Standard silicon-on-insulator</td></tr>
-                        <tr><td>Splitting Ratio</td><td>50 / 50</td><td>Designed for equal power split</td></tr>
-                        <tr><td>Insertion Loss</td><td>— dB</td><td>Fill in from simulation</td></tr>
-                        <tr><td>Back-Reflection</td><td>— dB</td><td>Fill in from simulation</td></tr>
-                        <tr><td>Bandwidth</td><td>— nm</td><td>3 dB bandwidth</td></tr>
-                        <tr><td>Branching Angle</td><td>—°</td><td>Optimized via parametric sweep</td></tr>
-                        <tr><td>Tool</td><td>Lumerical FDTD / EME</td><td></td></tr>
+                        <tr><td>Platform</td><td>SOI</td><td>Si core (n² = 12.04), SiO₂ cladding (n² = 2.07)</td></tr>
+                        <tr><td>Waveguide Thickness</td><td>220 nm</td><td>Standard SOI device layer</td></tr>
+                        <tr><td>Waveguide Width</td><td>400 nm</td><td>Bus and ring waveguide width</td></tr>
+                        <tr><td>Ring Radius</td><td>4 µm</td><td>Center of waveguide to center of ring</td></tr>
+                        <tr><td>Ring–Bus Gap</td><td>150 nm</td><td>Evanescent coupling gap</td></tr>
+                        <tr><td>Center Wavelength</td><td>1.55 µm</td><td>Telecom C-band</td></tr>
+                        <tr><td>FSR</td><td>~20 nm</td><td>Observed from drop port spectrum</td></tr>
+                        <tr><td>Extinction Ratio</td><td>~25–27 dB</td><td>Through port resonance dip depth</td></tr>
+                        <tr><td>Simulation Tool</td><td>Tidy3D FDTD v2.10.1</td><td>Auto-grid, 15 steps/λ; z-symmetry applied</td></tr>
                     </tbody>
                 </table>
 
-                <div class="project-links">
-                    <a href="https://github.com/yourusername/yourrepo" class="btn btn-primary">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
-                        GitHub
-                    </a>
-                    <a href="#" class="btn btn-secondary">Report (PDF)</a>
-                </div>
             </div>
         </div>
 
@@ -515,37 +567,23 @@
             </div>
             <div class="project-body">
                 <p class="project-description">
-                    Inverse-taper edge coupler designed for efficient fiber-to-chip coupling on a silicon photonics
-                    platform. The tapered waveguide tip expands the optical mode to match a lensed or cleaved fiber,
-                    minimizing mode mismatch loss. Simulations characterize coupling efficiency as a function of taper
-                    length, tip width, and fiber alignment tolerance.
+                    Linear-taper waveguide coupler simulated on a silicon-on-insulator platform using Tidy3D FDTD.
+                    The waveguide narrows from 500 nm at the output to 350 nm at the input facet over a 5 µm taper,
+                    improving mode overlap with the input field. A broadband Gaussian pulse spanning
+                    760–840 nm (center 800 nm) drives a ModeSource, and power transmission into each of 5
+                    output modes is tracked via a ModeMonitor at the output. The simulation domain is terminated
+                    with PML on all sides with a 1 ps run time and 10⁻⁵ shutoff criterion.
                 </p>
 
                 <!-- Media Grid -->
                 <div class="media-grid">
                     <div class="media-item">
-                        <div class="media-placeholder" title="Click to upload image">
-                            <input type="file" accept="image/*" onchange="loadImage(this)">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                            <span>Taper Geometry</span>
-                        </div>
-                        <div class="media-caption">Fig. 1 — Inverse taper geometry</div>
+                        <img src="edge_coupler_geometry.png" alt="Tidy3D top-view XY geometry of edge coupler taper" style="width:100%;height:200px;object-fit:cover;display:block;">
+                        <div class="media-caption">Fig. 1 — Tidy3D top-view XY geometry: SiO₂ cladding (yellow), Si taper 350 → 500 nm over 5 µm (pink)</div>
                     </div>
                     <div class="media-item">
-                        <div class="media-placeholder" title="Click to upload image">
-                            <input type="file" accept="image/*" onchange="loadImage(this)">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                            <span>Mode Profile</span>
-                        </div>
-                        <div class="media-caption">Fig. 2 — Mode field diameter at tip</div>
-                    </div>
-                    <div class="media-item">
-                        <div class="media-placeholder" title="Click to upload image">
-                            <input type="file" accept="image/*" onchange="loadImage(this)">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                            <span>Coupling Efficiency</span>
-                        </div>
-                        <div class="media-caption">Fig. 3 — Coupling efficiency vs. tip width</div>
+                        <img src="edge_coupler_modes.png" alt="Coupling efficiency vs wavelength for all 5 output modes" style="width:100%;height:200px;object-fit:cover;display:block;">
+                        <div class="media-caption">Fig. 2 — Coupling efficiency (dB) vs. wavelength (760–840 nm) for modes 0–4; mode 0 dominates near 0 dB</div>
                     </div>
                 </div>
 
@@ -559,76 +597,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Platform</td><td>SOI 220 nm</td><td>Standard silicon-on-insulator</td></tr>
-                        <tr><td>Coupler Type</td><td>Inverse taper</td><td></td></tr>
-                        <tr><td>Tip Width</td><td>— nm</td><td>Fill in from design</td></tr>
-                        <tr><td>Taper Length</td><td>— µm</td><td>Fill in from design</td></tr>
-                        <tr><td>Coupling Efficiency</td><td>— %</td><td>At design wavelength</td></tr>
-                        <tr><td>Insertion Loss</td><td>— dB</td><td>Fill in from simulation</td></tr>
-                        <tr><td>Fiber Type</td><td>Lensed / Cleaved</td><td>Fill in</td></tr>
-                        <tr><td>Tool</td><td>Lumerical FDTD / MODE</td><td></td></tr>
+                        <tr><td>Platform</td><td>SOI</td><td>SiO₂ cladding (n = 1.45), Si core (n = 2.0)</td></tr>
+                        <tr><td>Waveguide Thickness</td><td>200 nm</td><td>Slab bounds ±100 nm in z</td></tr>
+                        <tr><td>Input Width</td><td>350 nm</td><td>Narrow end at source facet</td></tr>
+                        <tr><td>Output Width</td><td>500 nm</td><td>Wide end at mode monitor</td></tr>
+                        <tr><td>Taper Length</td><td>5 µm</td><td>Linear width transition</td></tr>
+                        <tr><td>Wavelength Range</td><td>760 – 840 nm</td><td>80 nm bandwidth, 10 sample points</td></tr>
+                        <tr><td>Simulation Tool</td><td>Tidy3D FDTD</td><td>Auto-grid, 20 steps/λ; PML all sides</td></tr>
+                        <tr><td>Run Time</td><td>10 ps</td><td>Shutoff criterion 10⁻⁵</td></tr>
                     </tbody>
                 </table>
 
-                <div class="project-links">
-                    <a href="https://github.com/yourusername/yourrepo" class="btn btn-primary">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
-                        GitHub
-                    </a>
-                    <a href="#" class="btn btn-secondary">Report (PDF)</a>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════
-         OTHER PROJECTS
-    ══════════════════════════════════════════ -->
-    <section id="projects" class="section">
-        <div class="section-header">
-            <h2>Other Projects</h2>
-            <span class="section-label">EE &amp; Embedded Systems</span>
-        </div>
-
-        <div class="project-card-simple">
-            <div>
-                <h3>Microring Resonator Process Monitor</h3>
-                <p>Simulation and fabrication-aware modeling of silicon photonic microrings.</p>
-            </div>
-            <a href="https://github.com/yourusername/yourrepo" class="btn btn-secondary">GitHub</a>
-        </div>
-
-        <div class="project-card-simple">
-            <div>
-                <h3>ESP32 Inertial Navigation System</h3>
-                <p>Embedded firmware and sensor fusion for IMU-based navigation.</p>
-            </div>
-            <a href="https://github.com/yourusername/yourrepo" class="btn btn-secondary">GitHub</a>
         </div>
     </section>
 
 </main>
 
 <footer id="contact">
-    Glenn Weil &nbsp;·&nbsp; Electrical Engineering &nbsp;·&nbsp;
-    <a href="mailto:you@example.com" style="color:inherit;">you@example.com</a>
+    <div class="footer-inner">
+        <span class="footer-name">Glenn Weil</span>
+    </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Simple image uploader for placeholders
     function loadImage(input) {
         if (!input.files || !input.files[0]) return;
         const reader = new FileReader();
         reader.onload = function(e) {
             const placeholder = input.closest('.media-placeholder');
-            const mediaItem = placeholder.closest('.media-item');
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            placeholder.replaceWith(img);
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-</script>
-
-</body>
-</html>
+            const mediaItem = placeholder.closest('.media
