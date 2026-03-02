@@ -1,410 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glenn Weil | RF Project Card Preview</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #f5f3ef;
-            --surface: #faf9f7;
-            --surface-2: #eeece8;
-            --ink: #1a1a18;
-            --ink-muted: #6b6860;
-            --ink-faint: #b0aea8;
-            --accent: #2d5a8e;
-            --accent-light: #e8eef5;
-            --rule: #d8d5cf;
-            --serif: 'Cormorant Garamond', Georgia, serif;
-            --mono: 'DM Mono', monospace;
-            --sans: 'DM Sans', sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glenn Weil | Electrical Engineering Portfolio</title>
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-        body {
-            background: var(--bg);
-            color: var(--ink);
-            font-family: var(--sans);
-            font-weight: 300;
-            line-height: 1.7;
-            font-size: 15px;
-        }
+<style>
+:root {
+    --bg:#f5f3ef;
+    --surface:#faf9f7;
+    --surface-2:#eeece8;
+    --ink:#1a1a18;
+    --ink-muted:#6b6860;
+    --ink-faint:#b0aea8;
+    --accent:#2d5a8e;
+    --accent-light:#e8eef5;
+    --rule:#d8d5cf;
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --mono:'DM Mono', monospace;
+    --sans:'DM Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;font-size:15px}
 
-        /* ── HEADER (matching your site) ── */
-        header {
-            background: var(--ink);
-            color: var(--bg);
-            padding: 44px 0 36px;
-            position: relative;
-            overflow: hidden;
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
-        }
-        .header-inner { max-width: 900px; margin: 0 auto; padding: 0 40px; position: relative; }
-        header h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem,4vw,3.2rem); letter-spacing: 0.01em; line-height: 1.1; margin-bottom: 10px; }
-        header .tagline { font-family: var(--mono); font-weight: 300; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
-        header .tagline span { color: rgba(255,255,255,0.5); margin: 0 10px; }
-        .header-blurb { margin-top: 10px; font-family: var(--sans); font-weight: 300; font-size: 0.88rem; color: rgba(255,255,255,0.48); max-width: 560px; line-height: 1.75; }
-        .header-contact { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 16px; display: flex; align-items: center; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); width: fit-content; }
-        .header-contact a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
-        .header-contact a:hover { color: rgba(255,255,255,0.8); }
-        .header-sep { color: rgba(255,255,255,0.2); }
+header{background:var(--ink);color:var(--bg);padding:44px 0 36px;position:relative}
+.header-inner{max-width:900px;margin:0 auto;padding:0 40px}
+header h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;margin-bottom:10px}
+.tagline{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint)}
+.header-blurb{margin-top:10px;font-size:0.88rem;color:rgba(255,255,255,0.6);max-width:560px}
+.header-contact{font-family:var(--mono);font-size:0.7rem;margin-top:16px;display:flex;gap:10px}
+.header-contact a{color:rgba(255,255,255,0.6);text-decoration:none}
+.header-contact a:hover{color:white}
 
-        /* ── NAV ── */
-        nav { background: var(--surface); border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 100; }
-        nav ul { max-width: 900px; margin: 0 auto; padding: 0 40px; list-style: none; display: flex; gap: 0; }
-        nav a { display: block; padding: 16px 20px; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
-        nav a:hover, nav a.active { color: var(--ink); border-bottom-color: var(--accent); }
+nav{background:var(--surface);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:100}
+nav ul{max-width:900px;margin:0 auto;padding:0 40px;list-style:none;display:flex}
+nav a{display:block;padding:16px 20px;font-family:var(--mono);font-size:0.72rem;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;border-bottom:2px solid transparent}
+nav a.active,nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
 
-        /* ── LAYOUT ── */
-        main { max-width: 900px; margin: 0 auto; padding: 0 40px 80px; }
-        .section { padding-top: 40px; }
-        .section-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 40px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
-        .section-header h2 { font-family: var(--serif); font-weight: 400; font-size: 2rem; letter-spacing: 0.01em; }
-        .section-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+main{max-width:900px;margin:0 auto;padding:0 40px 80px}
+.section{padding-top:40px}
+.section-header{display:flex;gap:20px;margin-bottom:40px;padding-bottom:16px;border-bottom:1px solid var(--rule)}
+.section-header h2{font-family:var(--serif);font-size:2rem;font-weight:400}
+.section-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint)}
 
-        /* ── PROJECT CARD ── */
-        .project-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; margin-bottom: 48px; overflow: hidden; transition: box-shadow 0.25s; }
-        .project-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
-        .project-header { padding: 28px 32px 20px; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-        .project-header h3 { font-family: var(--serif); font-weight: 400; font-size: 1.55rem; letter-spacing: 0.01em; }
-        .project-tag { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent-light); color: var(--accent); padding: 4px 10px; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
-        .project-tag.in-progress { background: #fef3e2; color: #b45309; }
-        .project-body { padding: 28px 32px; }
-        .project-description { color: var(--ink-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px; max-width: 640px; }
+.project-card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;margin-bottom:48px;overflow:hidden}
+.project-header{padding:28px 32px 20px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between}
+.project-header h3{font-family:var(--serif);font-size:1.55rem}
+.project-tag{font-family:var(--mono);font-size:0.66rem;text-transform:uppercase;background:var(--accent-light);color:var(--accent);padding:4px 10px;border-radius:2px}
+.project-tag.in-progress{background:#fef3e2;color:#b45309}
+.project-body{padding:28px 32px}
+.project-description{color:var(--ink-muted);margin-bottom:28px;max-width:640px}
 
-        /* ── SPECS TABLE ── */
-        .specs-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 24px; }
-        .specs-table th { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); text-align: left; padding: 8px 12px; background: var(--surface-2); border: 1px solid var(--rule); }
-        .specs-table td { padding: 9px 12px; border: 1px solid var(--rule); color: var(--ink-muted); }
-        .specs-table tr:nth-child(even) td { background: var(--surface-2); }
-        .specs-table td:first-child { color: var(--ink); font-weight: 400; }
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:28px}
+.media-item img{width:100%;height:300px;object-fit:cover;cursor:zoom-in}
+.media-caption{padding:8px 12px;font-family:var(--mono);font-size:0.68rem;color:var(--ink-muted);border-top:1px solid var(--rule)}
 
-        /* ── MEDIA GRID ── */
-        .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 28px; }
-        .media-item { background: var(--surface-2); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
-        .media-item img { width: 100%; height: 220px; object-fit: cover; display: block; cursor: zoom-in; }
-        .media-caption { padding: 8px 12px; font-family: var(--mono); font-size: 0.68rem; color: var(--ink-muted); letter-spacing: 0.04em; border-top: 1px solid var(--rule); background: var(--surface); }
+.specs-table{width:100%;border-collapse:collapse;font-size:0.88rem;margin-bottom:24px}
+.specs-table th,.specs-table td{border:1px solid var(--rule);padding:8px}
+.specs-table th{background:var(--surface-2);font-family:var(--mono);font-size:0.66rem;text-transform:uppercase;color:var(--ink-faint)}
 
-        /* ── SVG DIAGRAM MEDIA ITEMS ── */
-        .media-item-svg { background: var(--surface-2); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
-        .media-item-svg .svg-wrap { width: 100%; background: #0e1a11; padding: 28px 24px; }
-        .media-item-svg .svg-wrap svg { width: 100%; height: auto; display: block; }
+.design-notes{border-left:2px solid var(--rule);padding-left:20px}
+.design-notes h4{font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
+.design-note{margin-bottom:12px;color:var(--ink-muted)}
 
-        /* ── UPLOAD PLACEHOLDER ── */
-        .media-placeholder { width: 100%; height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: var(--surface-2); color: var(--ink-faint); cursor: pointer; transition: background 0.2s; position: relative; }
-        .media-placeholder:hover { background: var(--accent-light); color: var(--accent); }
-        .media-placeholder input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-        .media-placeholder svg { width: 28px; height: 28px; stroke-width: 1.2; }
-        .media-placeholder span { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
-
-        /* ── DESIGN NOTES ── */
-        .design-notes { border-left: 2px solid var(--rule); padding-left: 20px; margin-bottom: 28px; }
-        .design-notes h4 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px; }
-        .design-note { margin-bottom: 12px; font-size: 0.9rem; color: var(--ink-muted); line-height: 1.7; }
-        .design-note strong { color: var(--ink); font-weight: 500; }
-
-        /* ── PROGRESS BAR ── */
-        .progress-section { margin-bottom: 28px; }
-        .progress-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px; display: flex; justify-content: space-between; }
-        .progress-label span:last-child { color: #b45309; }
-        .progress-steps { display: flex; gap: 0; }
-        .progress-step { flex: 1; height: 3px; background: var(--rule); position: relative; }
-        .progress-step.done { background: var(--accent); }
-        .progress-step.active { background: linear-gradient(90deg, var(--accent) 60%, var(--rule) 60%); }
-        .progress-step + .progress-step { margin-left: 3px; }
-        .progress-legend { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
-        .progress-legend-item { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em; color: var(--ink-faint); display: flex; align-items: center; gap: 6px; }
-        .progress-legend-item::before { content: ''; width: 8px; height: 2px; background: currentColor; display: block; }
-        .progress-legend-item.done { color: var(--accent); }
-        .progress-legend-item.active { color: #b45309; }
-
-        /* ── BUTTONS ── */
-        .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
-        .btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.2s, color 0.2s; cursor: pointer; border: none; }
-        .btn-primary { background: var(--ink); color: var(--bg); }
-        .btn-primary:hover { background: var(--accent); }
-        .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
-        .btn-secondary:hover { background: var(--surface-2); }
-
-        /* ── LIGHTBOX ── */
-        .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,8,0.92); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; }
-        .lightbox-overlay.active { display: flex; }
-        .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 2px; box-shadow: 0 24px 80px rgba(0,0,0,0.6); cursor: default; }
-        .lightbox-close { position: fixed; top: 24px; right: 32px; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); cursor: pointer; transition: color 0.2s; }
-        .lightbox-close:hover { color: rgba(255,255,255,0.9); }
-
-        footer { border-top: 1px solid var(--rule); padding: 32px 40px; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--ink-faint); text-transform: uppercase; }
-        .footer-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-        .footer-name { color: var(--ink-muted); }
-    </style>
+.lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);align-items:center;justify-content:center}
+.lightbox-overlay.active{display:flex}
+.lightbox-overlay img{max-width:90vw;max-height:90vh}
+</style>
 </head>
+
 <body>
 
 <header>
-    <div class="header-inner">
-        <h1>Glenn Weil</h1>
-        <p class="tagline">Electrical Engineering <span>/</span> Photonics <span>/</span> RF & Microwave Engineering</p>
-        <p class="header-blurb">Pursuing electrical engineering with a focus on photonics and microwave engineering, with developing expertise in electromagnetic simulation, waveguide design, photonic device characterization, and experimental test and analysis.</p>
-        <div class="header-contact">
-            <a href="mailto:glennweil322@gmail.com">glennweil322@gmail.com</a>
-            <span class="header-sep">·</span>
-            <a href="https://www.linkedin.com/in/glenn-weil-0b9a28223" target="_blank">LinkedIn</a>
-        </div>
-    </div>
+<div class="header-inner">
+<h1>Glenn Weil</h1>
+<p class="tagline">Electrical Engineering / Photonics / RF & Microwave Engineering</p>
+<p class="header-blurb">Electromagnetic simulation, waveguide design, photonic device modeling, and RF PCB systems.</p>
+<div class="header-contact">
+<a href="mailto:glennweil322@gmail.com">glennweil322@gmail.com</a>
+<a href="https://www.linkedin.com/in/glenn-weil-0b9a28223" target="_blank">LinkedIn</a>
+</div>
+</div>
 </header>
 
 <nav>
-    <ul>
-        <li><a href="#photonics">Photonics</a></li>
-        <li><a href="#rf" class="active">RF & Microwave</a></li>
-    </ul>
+<ul>
+<li><a href="#photonics" class="active">Photonics</a></li>
+<li><a href="#rf">RF & Microwave</a></li>
+</ul>
 </nav>
 
 <main>
 
-    <!-- ══════════════════════════════════════════
-         RF & MICROWAVE SECTION  ← paste this into your site
-    ══════════════════════════════════════════ -->
-    <section id="rf" class="section">
-        <div class="section-header">
-            <h2>RF & Microwave</h2>
-            <span class="section-label">PCB Design · Beamforming</span>
-        </div>
-
-        <div class="project-card">
-            <div class="project-header">
-                <h3>2.4 GHz Dual-Element Phased Array RF Front-End</h3>
-                <span class="project-tag in-progress">In Progress</span>
-            </div>
-            <div class="project-body">
-
-                <!-- Description -->
-                <p class="project-description">
-                    A 2-element 2.4 GHz phased array demo board with integrated patch antennas,
-                    controlled-impedance microstrip routing, and digital phase control via the PE43204.
-                    Validated through VNA S-parameter measurement and near-field beam pattern characterization
-                    across a ±45° steering range.
-                </p>
-
-                <!-- Progress tracker -->
-                <div class="progress-section">
-                    <div class="progress-label">
-                        <span>Project Progress</span>
-                        <span>Phase 1 of 5 — System Design</span>
-                    </div>
-                    <div class="progress-steps">
-                        <div class="progress-step active"></div>
-                        <div class="progress-step"></div>
-                        <div class="progress-step"></div>
-                        <div class="progress-step"></div>
-                        <div class="progress-step"></div>
-                    </div>
-                    <div class="progress-legend">
-                        <span class="progress-legend-item active">System Design & Calcs</span>
-                        <span class="progress-legend-item">PCB Layout</span>
-                        <span class="progress-legend-item">Fabrication</span>
-                        <span class="progress-legend-item">Assembly</span>
-                        <span class="progress-legend-item">RF Characterization</span>
-                    </div>
-                </div>
-
-                <!-- Block diagram SVG -->
-                <div class="media-grid" style="grid-template-columns: 1fr; margin-bottom: 28px;">
-                    <div class="media-item-svg">
-                        <div class="svg-wrap">
-                            <svg viewBox="0 0 760 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="pcb" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="#0d1f16"/>
-                                        <stop offset="100%" stop-color="#081009"/>
-                                    </linearGradient>
-                                </defs>
-                                <rect x="8" y="8" width="744" height="284" rx="3" fill="url(#pcb)" stroke="#1a3028" stroke-width="1"/>
-
-                                <!-- SMA inputs -->
-                                <rect x="22" y="88" width="48" height="26" rx="2" fill="#0d2018" stroke="#2a5040" stroke-width="1"/>
-                                <text x="46" y="105" font-family="DM Mono,monospace" font-size="8" fill="#4a8060" text-anchor="middle">SMA IN</text>
-                                <rect x="22" y="186" width="48" height="26" rx="2" fill="#0d2018" stroke="#2a5040" stroke-width="1"/>
-                                <text x="46" y="203" font-family="DM Mono,monospace" font-size="8" fill="#4a8060" text-anchor="middle">SMA IN</text>
-
-                                <!-- RF paths CH1 -->
-                                <path d="M70 101 L120 101" stroke="#2d5a8e" stroke-width="2.5"/>
-                                <rect x="120" y="88" width="60" height="26" rx="2" fill="#0d1e30" stroke="#2d5a8e" stroke-width="1"/>
-                                <text x="150" y="102" font-family="DM Mono,monospace" font-size="8" fill="#2d5a8e" text-anchor="middle">LNA</text>
-                                <text x="150" y="112" font-family="DM Mono,monospace" font-size="7" fill="#1a3a5a" text-anchor="middle">SKY67151</text>
-                                <path d="M180 101 L240 101" stroke="#2d5a8e" stroke-width="2.5"/>
-                                <rect x="240" y="88" width="68" height="26" rx="2" fill="#1a1428" stroke="#6a4a90" stroke-width="1"/>
-                                <text x="274" y="102" font-family="DM Mono,monospace" font-size="8" fill="#8a6ab0" text-anchor="middle">PHASE Δ</text>
-                                <text x="274" y="112" font-family="DM Mono,monospace" font-size="7" fill="#4a3070" text-anchor="middle">PE43204</text>
-
-                                <!-- RF paths CH2 -->
-                                <path d="M70 199 L120 199" stroke="#2d5a8e" stroke-width="2.5"/>
-                                <rect x="120" y="186" width="60" height="26" rx="2" fill="#0d1e30" stroke="#2d5a8e" stroke-width="1"/>
-                                <text x="150" y="200" font-family="DM Mono,monospace" font-size="8" fill="#2d5a8e" text-anchor="middle">LNA</text>
-                                <text x="150" y="210" font-family="DM Mono,monospace" font-size="7" fill="#1a3a5a" text-anchor="middle">SKY67151</text>
-                                <path d="M180 199 L240 199" stroke="#2d5a8e" stroke-width="2.5"/>
-                                <rect x="240" y="186" width="68" height="26" rx="2" fill="#1a1428" stroke="#6a4a90" stroke-width="1"/>
-                                <text x="274" y="200" font-family="DM Mono,monospace" font-size="8" fill="#8a6ab0" text-anchor="middle">PHASE Δ</text>
-                                <text x="274" y="210" font-family="DM Mono,monospace" font-size="7" fill="#4a3070" text-anchor="middle">PE43204</text>
-
-                                <!-- Phase match annotation -->
-                                <line x1="120" y1="80" x2="308" y2="80" stroke="#b45309" stroke-width="0.8" stroke-dasharray="3,2"/>
-                                <line x1="120" y1="220" x2="308" y2="220" stroke="#b45309" stroke-width="0.8" stroke-dasharray="3,2"/>
-                                <text x="214" y="76" font-family="DM Mono,monospace" font-size="7" fill="#b45309" text-anchor="middle">length-matched</text>
-                                <text x="214" y="228" font-family="DM Mono,monospace" font-size="7" fill="#b45309" text-anchor="middle">length-matched</text>
-
-                                <!-- To Wilkinson -->
-                                <path d="M308 101 L370 101 L395 148" stroke="#2d5a8e" stroke-width="2.5"/>
-                                <path d="M308 199 L370 199 L395 152" stroke="#2d5a8e" stroke-width="2.5"/>
-
-                                <!-- Wilkinson combiner -->
-                                <polygon points="385,133 412,150 385,167" fill="#0d2018" stroke="#4a8060" stroke-width="1.2"/>
-                                <text x="400" y="154" font-family="DM Mono,monospace" font-size="7" fill="#4a8060" text-anchor="middle">Wilkinson</text>
-
-                                <!-- Combiner to output -->
-                                <path d="M412 150 L470 150" stroke="#2d5a8e" stroke-width="2.5"/>
-
-                                <!-- Patch antennas -->
-                                <rect x="470" y="110" width="50" height="50" rx="1" fill="none" stroke="#2d5a8e" stroke-width="1.5" stroke-dasharray="4,2"/>
-                                <rect x="470" y="170" width="50" height="50" rx="1" fill="none" stroke="#2d5a8e" stroke-width="1.5" stroke-dasharray="4,2"/>
-                                <text x="495" y="138" font-family="DM Mono,monospace" font-size="8" fill="#2d5a8e" text-anchor="middle">PATCH</text>
-                                <text x="495" y="149" font-family="DM Mono,monospace" font-size="7" fill="#1a3a5a" text-anchor="middle">ANT 1</text>
-                                <text x="495" y="198" font-family="DM Mono,monospace" font-size="8" fill="#2d5a8e" text-anchor="middle">PATCH</text>
-                                <text x="495" y="209" font-family="DM Mono,monospace" font-size="7" fill="#1a3a5a" text-anchor="middle">ANT 2</text>
-
-                                <!-- Feed lines from combiner to patches -->
-                                <path d="M412 150 L460 150 L460 135 L470 135" stroke="#2d5a8e" stroke-width="1.5"/>
-                                <path d="M460 150 L460 195 L470 195" stroke="#2d5a8e" stroke-width="1.5"/>
-
-                                <!-- λ/2 spacing annotation -->
-                                <line x1="524" y1="135" x2="540" y2="135" stroke="#b0aea8" stroke-width="0.8"/>
-                                <line x1="524" y1="195" x2="540" y2="195" stroke="#b0aea8" stroke-width="0.8"/>
-                                <line x1="532" y1="135" x2="532" y2="195" stroke="#b0aea8" stroke-width="0.8"/>
-                                <text x="545" y="168" font-family="DM Mono,monospace" font-size="7" fill="#6b6860">λ/2</text>
-                                <text x="545" y="178" font-family="DM Mono,monospace" font-size="7" fill="#6b6860">62.5mm</text>
-
-                                <!-- SPI control bus -->
-                                <rect x="310" y="248" width="90" height="26" rx="2" fill="#1a1008" stroke="#b45309" stroke-width="1"/>
-                                <text x="355" y="265" font-family="DM Mono,monospace" font-size="8" fill="#b45309" text-anchor="middle">STM32 / SPI</text>
-                                <path d="M355 248 L355 228 L274 228 L274 214" stroke="#b45309" stroke-width="0.8" stroke-dasharray="3,2"/>
-                                <path d="M355 248 L355 228 L274 228" stroke="#b45309" stroke-width="0.8" stroke-dasharray="3,2"/>
-                                <path d="M274 228 L274 116" stroke="#b45309" stroke-width="0.8" stroke-dasharray="3,2"/>
-
-                                <!-- CH labels -->
-                                <text x="16" y="88" font-family="DM Mono,monospace" font-size="7" fill="#2a4a38">CH1</text>
-                                <text x="16" y="186" font-family="DM Mono,monospace" font-size="7" fill="#2a4a38">CH2</text>
-
-                                <!-- Legend -->
-                                <line x1="580" y1="255" x2="596" y2="255" stroke="#2d5a8e" stroke-width="2"/>
-                                <text x="600" y="259" font-family="DM Mono,monospace" font-size="7" fill="#6b6860">RF path</text>
-                                <line x1="580" y1="268" x2="596" y2="268" stroke="#b45309" stroke-width="0.8" stroke-dasharray="3,2"/>
-                                <text x="600" y="272" font-family="DM Mono,monospace" font-size="7" fill="#6b6860">SPI / length-match</text>
-                                <rect x="580" y="278" width="14" height="10" rx="1" fill="none" stroke="#2d5a8e" stroke-width="1.2" stroke-dasharray="3,2"/>
-                                <text x="600" y="286" font-family="DM Mono,monospace" font-size="7" fill="#6b6860">Patch antenna</text>
-                            </svg>
-                        </div>
-                        <div class="media-caption" style="background:var(--ink);color:#4a8060;border-top:1px solid #1a3028;">Fig. 1 — Signal chain block diagram: dual LNA + digital phase shifter → Wilkinson combiner → integrated patch antennas (λ/2 spacing)</div>
-                    </div>
-                </div>
-
-                <!-- Specs table -->
-                <table class="specs-table">
-                    <thead>
-                        <tr><th>Parameter</th><th>Value</th><th>Notes</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Frequency</td><td>2.4 GHz</td><td>ISM band</td></tr>
-                        <tr><td>Array Elements</td><td>2</td><td>λ/2 spacing, 62.5 mm</td></tr>
-                        <tr><td>Antenna</td><td>Integrated patch</td><td>~29 × 29 mm, inset microstrip feed</td></tr>
-                        <tr><td>Trace Impedance</td><td>50 Ω</td><td>Controlled-impedance microstrip, FR4 1.6 mm</td></tr>
-                        <tr><td>Phase Shifter</td><td>PE43204</td><td>6-bit, 5.625° LSB, SPI-controlled</td></tr>
-                        <tr><td>LNA</td><td>SKY67151-396LF</td><td>NF 0.6 dB, Gain 19 dB</td></tr>
-                        <tr><td>Steering Range</td><td>± 45°</td><td>Inter-channel phase error target &lt; 5°</td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Design rationale -->
-                <!-- Design rationale -->
-<div class="design-notes">
-  <h4>Design Rationale</h4>
-
-  <div class="design-note">
-    <strong>Substrate Selection.</strong>
-    FR4 was selected because at 2.4 GHz and short trace lengths the dielectric loss is acceptable, while keeping cost low and fabrication simple.
-  </div>
-
-  <div class="design-note">
-    <strong>Array Size.</strong>
-    Two elements were chosen to demonstrate phase-controlled beam steering while keeping layout symmetry, coupling, and phase matching manageable.
-  </div>
-
-  <div class="design-note">
-    <strong>Phase Control.</strong>
-    Digital phase shifting was used to enable programmable steering with sufficient resolution to meet the angular range and phase error targets.
-  </div>
-
-  <div class="design-note">
-    <strong>Integrated Antennas.</strong>
-    Patch antennas were integrated on the PCB to control spacing, impedance transitions, and electrical length without added connector discontinuities.
-  </div>
+<section id="photonics" class="section">
+<div class="section-header">
+<h2>Photonics</h2>
+<span class="section-label">Silicon Photonics</span>
 </div>
 
-            </div>
-        </div>
-    </section>
+<div class="project-card">
+<div class="project-header">
+<h3>Microring Resonator</h3>
+<span class="project-tag">Resonant Filter</span>
+</div>
+<div class="project-body">
+<p class="project-description">
+Add-drop microring resonator simulated in Tidy3D FDTD on SOI, demonstrating ~20 nm FSR and 25–27 dB extinction ratio.
+</p>
+</div>
+</div>
+</section>
+
+<section id="rf" class="section">
+<div class="section-header">
+<h2>RF & Microwave</h2>
+<span class="section-label">PCB Design · Beamforming</span>
+</div>
+
+<div class="project-card">
+<div class="project-header">
+<h3>2.4 GHz Dual-Element Phased Array</h3>
+<span class="project-tag in-progress">In Progress</span>
+</div>
+
+<div class="project-body">
+<p class="project-description">
+Designing and fabricating a 2-element 2.4 GHz phased-array PCB with integrated patch antennas and matched 50 Ω microstrip routing for coherent beam steering.
+</p>
+
+<div class="media-grid" style="grid-template-columns:1fr">
+<div style="background:#0e1a11;padding:28px">
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="10" width="740" height="280" fill="#081009" stroke="#1a3028"/>
+<text x="60" y="100" fill="#4a8060" font-family="monospace" font-size="10">SMA IN</text>
+<text x="140" y="100" fill="#2d5a8e" font-family="monospace" font-size="10">LNA</text>
+<text x="240" y="100" fill="#8a6ab0" font-family="monospace" font-size="10">Phase Δ</text>
+<text x="380" y="150" fill="#4a8060" font-family="monospace" font-size="10">Wilkinson</text>
+<text x="500" y="120" fill="#2d5a8e" font-family="monospace" font-size="10">Patch 1</text>
+<text x="500" y="190" fill="#2d5a8e" font-family="monospace" font-size="10">Patch 2</text>
+</svg>
+</div>
+<div class="media-caption">Signal chain block diagram of phased-array front-end</div>
+</div>
+
+</div>
+</div>
+</section>
 
 </main>
 
-<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close">esc / close</span>
-    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
-</div>
-
-<footer>
-    <div class="footer-inner">
-        <span class="footer-name">Glenn Weil</span>
-    </div>
-</footer>
-
 <script>
-    function openLightbox(src, alt) {
-        document.getElementById('lightbox-img').src = src;
-        document.getElementById('lightbox-img').alt = alt;
-        document.getElementById('lightbox').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-        document.getElementById('lightbox').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.media-item img').forEach(img => {
-            img.addEventListener('click', () => openLightbox(img.src, img.alt));
-        });
-    });
-    function loadImage(input) {
-        if (!input.files || !input.files[0]) return;
-        const reader = new FileReader();
-        reader.onload = e => {
-            const placeholder = input.closest('.media-placeholder');
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            img.style.cssText = 'width:100%;height:220px;object-fit:cover;display:block;cursor:zoom-in;';
-            img.addEventListener('click', () => openLightbox(img.src, ''));
-            placeholder.replaceWith(img);
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
+document.querySelectorAll('nav a').forEach(link=>{
+link.addEventListener('click',function(){
+document.querySelectorAll('nav a').forEach(l=>l.classList.remove('active'))
+this.classList.add('active')
+})
+})
 </script>
+
 </body>
 </html>
