@@ -432,7 +432,51 @@
             line-height: 1.75;
         }
 
-        /* ── FOOTER ── */
+        /* ── LIGHTBOX ── */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10,10,8,0.92);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 2px;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 24px;
+            right: 32px;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .media-item img {
+            cursor: zoom-in;
+        }
         footer {
             border-top: 1px solid var(--rule);
             padding: 32px 40px;
@@ -486,9 +530,9 @@
         <p class="tagline">Electrical Engineering <span>/</span> Photonics <span>/</span> RF & Microwave Engineering</p>
         <p class="header-blurb">Pursuing electrical engineering with a focus on photonics and microwave engineering, with developing expertise in electromagnetic simulation, waveguide design, photonic device characterization, and experimental test and analysis.</p>
         <div class="header-contact">
-            <a href="mailto:glennweil322@gmail.com">glennweil322@gmail.com</a>
+            <a href="glennweil322@gmail.com"></a>
             <span class="header-sep">·</span>
-            <a href="www.linkedin.com/in/glenn-weil-0b9a28223" target="_blank">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/glenn-weil-0b9a28223" target="_blank">LinkedIn</a>
         </div>
     </div>
 </header>
@@ -525,11 +569,7 @@
                 <!-- Media Grid -->
                 <div class="media-grid">
                     <div class="media-item">
-                        <div class="media-placeholder" title="Click to upload image">
-                            <input type="file" accept="image/*" onchange="loadImage(this)">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                            <span>Geometry</span>
-                        </div>
+                        <img src="microring_geometry.png" alt="Tidy3D top-view XY geometry of microring and bus waveguides" style="width:100%;height:332px;object-fit:contain;display:block;background:var(--surface-2);">
                         <div class="media-caption">Fig. 1 — Tidy3D top-view XY geometry of microring and bus waveguides</div>
                     </div>
                     <div class="media-item">
@@ -622,13 +662,59 @@
 
 </main>
 
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">esc / close</span>
+    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
 <footer id="contact">
     <div class="footer-inner">
         <span class="footer-name">Glenn Weil</span>
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Simple image uploader for placeholders
+<script>
+    // Lightbox
+    function openLightbox(src, alt) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox-img').alt = alt;
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Attach lightbox to all media-item images on load
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.media-item img').forEach(function(img) {
+            img.addEventListener('click', function() {
+                openLightbox(this.src, this.alt);
+            });
+        });
+    });
+
+    // Image uploader for placeholders
     function loadImage(input) {
-        i
+        if (!input.files || !input.files[0]) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const placeholder = input.closest('.media-placeholder');
+            const mediaItem = placeholder.closest('.media-item');
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.style.cssText = 'width:100%;height:332px;object-fit:cover;display:block;cursor:zoom-in;';
+            img.addEventListener('click', function() {
+                openLightbox(this.src, '');
+            });
+            placeholder.replaceWith(img);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+</script>
