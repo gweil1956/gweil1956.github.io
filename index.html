@@ -191,8 +191,6 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; font-family: var
 <p class="project-description">
 A 2-element 2.4 GHz phased array demo board with integrated patch antennas,
 controlled-impedance microstrip routing, and digital phase control via the PE43204.
-Validated through VNA S-parameter measurement and near-field beam pattern characterization
-across a ±45° steering range.
 </p>
 
 <!-- Progress tracker -->
@@ -333,35 +331,27 @@ across a ±45° steering range.
 </table>
 
 <!-- Design rationale -->
-                <div class="design-notes">
-                    <h4>Design Rationale</h4>
-                    <div class="design-note"><strong>FR4 over Rogers 4003C.</strong> Higher loss tangent, but at 2.4 GHz with short path lengths the insertion loss penalty is acceptable. Noted as a known limitation.</div>
-                    <div class="design-note"><strong>2 elements over 4.</strong> Fully demonstrates coherent beamforming and phase-controlled steering without multiplying layout and debug complexity.</div>
-                    <div class="design-note"><strong>PE43204 over HMC272.</strong> Better availability, lower cost, and 6-bit resolution is sufficient to meet the &lt;5° phase error target.</div>
-                    <div class="design-note"><strong>Integrated patch over external antennas.</strong> Designing the patch from first principles — resonant length, fringe correction, inset feed depth — is a core RF skill and makes the project more complete.</div>
-                </div>
-                <!-- Design rationale -->
 <div class="design-notes">
   <h4>Design Rationale</h4>
 
   <div class="design-note">
     <strong>Substrate Selection.</strong>
-    FR4 was selected because at 2.4 GHz and short trace lengths the dielectric loss is acceptable, while keeping cost low and fabrication simple.
+    FR4 is selected because at 2.4 GHz and short trace lengths the dielectric loss is acceptable, while keeping cost low and fabrication simple.
   </div>
 
   <div class="design-note">
     <strong>Array Size.</strong>
-    Two elements were chosen to demonstrate phase-controlled beam steering while keeping layout symmetry, coupling, and phase matching manageable.
+    Two elements is chosen to demonstrate phase-controlled beam steering while keeping layout symmetry, coupling, and phase matching manageable.
   </div>
 
   <div class="design-note">
     <strong>Phase Control.</strong>
-    Digital phase shifting was used to enable programmable steering with sufficient resolution to meet the angular range and phase error targets.
+    Digital phase shifting is used to enable programmable steering with sufficient resolution to meet the angular range and phase error targets.
   </div>
 
   <div class="design-note">
     <strong>Integrated Antennas.</strong>
-    Patch antennas were integrated on the PCB to control spacing, impedance transitions, and electrical length without added connector discontinuities.
+    Patch antennas are integrated on the PCB to control spacing, impedance transitions, and electrical length without added connector discontinuities.
   </div>
 </div>
 
