@@ -369,6 +369,123 @@ across a ±45° steering range.
 </div>
 </section>
 
+<section id="photonics" class="section">
+        <div class="section-header">
+            <h2>Photonics</h2>
+            <span class="section-label">Silicon Photonics Design</span>
+        </div>
+
+        <!-- PROJECT 1: MICRORING RESONATOR -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Microring Resonator</h3>
+                <span class="project-tag">Resonant Filter</span>
+            </div>
+            <div class="project-body">
+                <p class="project-description">
+                    Add-drop microring resonator simulated on a silicon-on-insulator platform using Tidy3D FDTD.
+                    A silicon ring (radius 4 µm, width 400 nm) is evanescently coupled to two parallel bus waveguides
+                    with a 150 nm gap. A broadband Gaussian mode source launched from the input port drives resonances
+                    across the 1.5–1.6 µm telecom band. Flux monitors at the through and drop ports capture the
+                    transmission spectrum, revealing periodic resonance dips with ~25–27 dB extinction and a
+                    free spectral range of approximately 20 nm.
+                </p>
+
+                <!-- Media Grid -->
+                <div class="media-grid">
+                    <div class="media-item">
+                        <img src="microring_geometry.png" alt="Tidy3D top-view XY geometry of microring and bus waveguides" style="width:100%;height:332px;object-fit:contain;display:block;background:var(--surface-2);">
+                        <div class="media-caption">Fig. 1 — Tidy3D top-view XY geometry of microring and bus waveguides</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="microring_efield.png" alt="Field profile in microring resonator" style="width:100%;height:332px;object-fit:cover;display:block;">
+                        <div class="media-caption">Fig. 2 — |E| field monitor at resonance: optical mode circulating in Si ring, with coupling into both bus waveguides</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="microring_spectrum.png" alt="Drop port transmission spectrum showing periodic resonance peaks" style="width:100%;height:332px;object-fit:contain;display:block;background:var(--surface-2);">
+                        <div class="media-caption">Fig. 3 — Drop port transmission (dB) vs. wavelength (1.5–1.6 µm); resonance peaks spaced by ~20 nm FSR</div>
+                    </div>
+                </div>
+
+                <!-- Specs Table -->
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Platform</td><td>SOI</td><td>Si core (n² = 12.04), SiO₂ cladding (n² = 2.07)</td></tr>
+                        <tr><td>Waveguide Thickness</td><td>220 nm</td><td>Standard SOI device layer</td></tr>
+                        <tr><td>Waveguide Width</td><td>400 nm</td><td>Bus and ring waveguide width</td></tr>
+                        <tr><td>Ring Radius</td><td>4 µm</td><td>Center of waveguide to center of ring</td></tr>
+                        <tr><td>Ring–Bus Gap</td><td>150 nm</td><td>Evanescent coupling gap</td></tr>
+                        <tr><td>Center Wavelength</td><td>1.55 µm</td><td>Telecom C-band</td></tr>
+                        <tr><td>FSR</td><td>~20 nm</td><td>Observed from drop port spectrum</td></tr>
+                        <tr><td>Extinction Ratio</td><td>~25–27 dB</td><td>Through port resonance dip depth</td></tr>
+                        <tr><td>Simulation Tool</td><td>Tidy3D FDTD v2.10.1</td><td>Auto-grid, 15 steps/λ; z-symmetry applied</td></tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <!-- PROJECT 2: EDGE COUPLER -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Edge Coupler</h3>
+                <span class="project-tag">I/O Interface</span>
+            </div>
+            <div class="project-body">
+                <p class="project-description">
+                    Linear-taper waveguide coupler simulated on a silicon-on-insulator platform using Tidy3D FDTD.
+                    The waveguide narrows from 500 nm at the output to 350 nm at the input facet over a 5 µm taper,
+                    improving mode overlap with the input field. A broadband Gaussian pulse spanning
+                    760–840 nm (center 800 nm) drives a ModeSource, and power transmission into each of 5
+                    output modes is tracked via a ModeMonitor at the output. The simulation domain is terminated
+                    with PML on all sides with a 1 ps run time and 10⁻⁵ shutoff criterion.
+                </p>
+
+                <!-- Media Grid -->
+                <div class="media-grid">
+                    <div class="media-item">
+                        <img src="edge_coupler_geometry.png" alt="Tidy3D top-view XY geometry of edge coupler taper" style="width:100%;height:332px;object-fit:cover;display:block;">
+                        <div class="media-caption">Fig. 1 — Tidy3D top-view XY geometry: SiO₂ cladding (yellow), Si taper 350 → 500 nm over 5 µm (pink)</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="edge_coupler_modes.png" alt="Coupling efficiency vs wavelength for all 5 output modes" style="width:100%;height:332px;object-fit:contain;display:block;background:var(--surface-2);">
+                        <div class="media-caption">Fig. 2 — Coupling efficiency (dB) vs. wavelength (760–840 nm) for modes 0–4; mode 0 dominates near 0 dB</div>
+                    </div>
+                </div>
+
+                <!-- Specs Table -->
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Platform</td><td>SOI</td><td>SiO₂ cladding (n = 1.45), Si core (n = 2.0)</td></tr>
+                        <tr><td>Waveguide Thickness</td><td>200 nm</td><td>Slab bounds ±100 nm in z</td></tr>
+                        <tr><td>Input Width</td><td>350 nm</td><td>Narrow end at source facet</td></tr>
+                        <tr><td>Output Width</td><td>500 nm</td><td>Wide end at mode monitor</td></tr>
+                        <tr><td>Taper Length</td><td>5 µm</td><td>Linear width transition</td></tr>
+                        <tr><td>Wavelength Range</td><td>760 – 840 nm</td><td>80 nm bandwidth, 10 sample points</td></tr>
+                        <tr><td>Simulation Tool</td><td>Tidy3D FDTD</td><td>Auto-grid, 20 steps/λ; PML all sides</td></tr>
+                        <tr><td>Run Time</td><td>10 ps</td><td>Shutoff criterion 10⁻⁵</td></tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+</section>
+
+
 </main>
 
 <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
