@@ -165,7 +165,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; font-family: var
 <nav>
 <ul>
 <li><a href="#photonics">Photonics</a></li>
-<li><a href="#rf" class="active">RF & Microwave</a></li>
+<li><a href="#rf">RF & Microwave</a></li>
 </ul>
 </nav>
 
@@ -519,6 +519,43 @@ placeholder.replaceWith(img);
 };
 reader.readAsDataURL(input.files[0]);
 }
+</script>
+<script>
+(function () {
+  const links = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+  const sections = links
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  function setActive(id) {
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  }
+
+  // Set on click immediately (so underline moves right away)
+  links.forEach(a => {
+    a.addEventListener('click', () => {
+      const id = a.getAttribute('href').slice(1);
+      setActive(id);
+    });
+  });
+
+  // Set on scroll (so underline stays correct if user scrolls manually)
+  const obs = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActive(visible.target.id);
+    },
+    { root: null, threshold: [0.2, 0.35, 0.5, 0.65] }
+  );
+
+  sections.forEach(sec => obs.observe(sec));
+
+  // Initial state
+  const initial = sections.find(sec => sec.getBoundingClientRect().top >= 0) || sections[0];
+  if (initial) setActive(initial.id);
+})();
 </script>
 </body>
 </html>
