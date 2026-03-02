@@ -1,10 +1,634 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glenn Weil | Electrical Engineering Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f3ef;
+            --surface: #faf9f7;
+            --surface-2: #eeece8;
+            --ink: #1a1a18;
+            --ink-muted: #6b6860;
+            --ink-faint: #b0aea8;
+            --accent: #2d5a8e;
+            --accent-light: #e8eef5;
+            --rule: #d8d5cf;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --mono: 'DM Mono', monospace;
+            --sans: 'DM Sans', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-weight: 300;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--ink);
+            color: var(--bg);
+            padding: 44px 0 36px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 40px,
+                rgba(255,255,255,0.02) 40px,
+                rgba(255,255,255,0.02) 41px
+            );
+        }
+
+        .header-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            letter-spacing: 0.01em;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        header .tagline {
+            font-family: var(--mono);
+            font-weight: 300;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+
+        header .tagline span {
+            color: rgba(255,255,255,0.5);
+            margin: 0 10px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: var(--surface);
+            border-bottom: 1px solid var(--rule);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 16px 20px;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--ink);
+            border-bottom-color: var(--accent);
+        }
+
+        /* ── MAIN LAYOUT ── */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+        }
+
+        /* ── SECTION ── */
+        .section {
+            padding-top: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 2rem;
+            letter-spacing: 0.01em;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+
+        /* ── PROJECT CARD ── */
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            margin-bottom: 48px;
+            overflow: hidden;
+            transition: box-shadow 0.25s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        .project-header {
+            padding: 28px 32px 20px;
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .project-header h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 1.55rem;
+            letter-spacing: 0.01em;
+        }
+
+        .project-tag {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 2px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .project-body {
+            padding: 28px 32px;
+        }
+
+        .project-description {
+            color: var(--ink-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 28px;
+            max-width: 640px;
+        }
+
+        /* ── MEDIA GRID ── */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .media-item {
+            background: var(--surface-2);
+            border: 1px solid var(--rule);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .media-item img {
+            width: 100%;
+            height: 332px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Placeholder when no image is attached */
+        .media-placeholder {
+            width: 100%;
+            height: 332px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--surface-2);
+            color: var(--ink-faint);
+            cursor: pointer;
+            transition: background 0.2s;
+            position: relative;
+        }
+
+        .media-placeholder:hover {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .media-placeholder input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+
+        .media-placeholder svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 1.2;
+        }
+
+        .media-placeholder span {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .media-caption {
+            padding: 8px 12px;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--ink-muted);
+            letter-spacing: 0.04em;
+            border-top: 1px solid var(--rule);
+            background: var(--surface);
+        }
+
+        /* ── SPECS TABLE ── */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            margin-bottom: 24px;
+        }
+
+        .specs-table th {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            text-align: left;
+            padding: 8px 12px;
+            background: var(--surface-2);
+            border: 1px solid var(--rule);
+        }
+
+        .specs-table td {
+            padding: 9px 12px;
+            border: 1px solid var(--rule);
+            color: var(--ink-muted);
+        }
+
+        .specs-table tr:nth-child(even) td {
+            background: var(--surface-2);
+        }
+
+        .specs-table td:first-child {
+            color: var(--ink);
+            font-weight: 400;
+        }
+
+        /* ── PROJECT LINKS ── */
+        .project-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 18px;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--ink);
+            border: 1px solid var(--rule);
+        }
+
+        .btn-secondary:hover {
+            background: var(--surface-2);
+        }
+
+        /* ── GENERAL PROJECTS SECTION ── */
+        .project-card-simple {
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            padding: 24px 28px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            transition: box-shadow 0.2s;
+        }
+
+        .project-card-simple:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+        }
+
+        .project-card-simple h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .project-card-simple p {
+            color: var(--ink-muted);
+            font-size: 0.9rem;
+        }
+
+        .header-contact {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: fit-content;
+        }
+
+        .header-contact a {
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .header-contact a:hover {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .header-sep {
+            color: rgba(255,255,255,0.2);
+        }
+
+        .header-blurb {
+            margin-top: 10px;
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.48);
+            max-width: 560px;
+            line-height: 1.75;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--rule);
+            padding: 32px 40px;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            color: var(--ink-faint);
+            text-transform: uppercase;
+        }
+
+        .footer-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-name {
+            color: var(--ink-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: var(--ink-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-sep {
+            color: var(--ink-faint);
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>Contact me at: glennweil322@gmail.com</p>
-</body>
-</html>
+
+<header>
+    <div class="header-inner">
+        <h1>Glenn Weil</h1>
+        <p class="tagline">Electrical Engineering <span>/</span> Photonics <span>/</span> RF & Microwave Engineering</p>
+        <p class="header-blurb">Pursuing electrical engineering with a focus on photonics and microwave engineering, with developing expertise in electromagnetic simulation, waveguide design, photonic device characterization, and experimental test and analysis.</p>
+        <div class="header-contact">
+            <a href="mailto:glennweil322@gmail.com">glennweil322@gmail.com</a>
+            <span class="header-sep">·</span>
+            <a href="www.linkedin.com/in/glenn-weil-0b9a28223" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+</header>
+
+
+
+<main>
+
+    <!-- ══════════════════════════════════════════
+         PHOTONICS SECTION
+    ══════════════════════════════════════════ -->
+    <section id="photonics" class="section">
+        <div class="section-header">
+            <h2>Photonics</h2>
+            <span class="section-label">Silicon Photonics Design</span>
+        </div>
+
+        <!-- PROJECT 1: MICRORING RESONATOR -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Microring Resonator</h3>
+                <span class="project-tag">Resonant Filter</span>
+            </div>
+            <div class="project-body">
+                <p class="project-description">
+                    Add-drop microring resonator simulated on a silicon-on-insulator platform using Tidy3D FDTD.
+                    A silicon ring (radius 4 µm, width 400 nm) is evanescently coupled to two parallel bus waveguides
+                    with a 150 nm gap. A broadband Gaussian mode source launched from the input port drives resonances
+                    across the 1.5–1.6 µm telecom band. Flux monitors at the through and drop ports capture the
+                    transmission spectrum, revealing periodic resonance dips with ~25–27 dB extinction and a
+                    free spectral range of approximately 20 nm.
+                </p>
+
+                <!-- Media Grid -->
+                <div class="media-grid">
+                    <div class="media-item">
+                        <div class="media-placeholder" title="Click to upload image">
+                            <input type="file" accept="image/*" onchange="loadImage(this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                            <span>Geometry</span>
+                        </div>
+                        <div class="media-caption">Fig. 1 — Tidy3D top-view XY geometry of microring and bus waveguides</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="microring_efield.png" alt="Field profile in microring resonator" style="width:100%;height:332px;object-fit:cover;display:block;">
+                        <div class="media-caption">Fig. 2 — |E| field monitor at resonance: optical mode circulating in Si ring, with coupling into both bus waveguides</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="microring_spectrum.png" alt="Drop port transmission spectrum showing periodic resonance peaks" style="width:100%;height:332px;object-fit:contain;display:block;background:var(--surface-2);">
+                        <div class="media-caption">Fig. 3 — Drop port transmission (dB) vs. wavelength (1.5–1.6 µm); resonance peaks spaced by ~20 nm FSR</div>
+                    </div>
+                </div>
+
+                <!-- Specs Table -->
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Platform</td><td>SOI</td><td>Si core (n² = 12.04), SiO₂ cladding (n² = 2.07)</td></tr>
+                        <tr><td>Waveguide Thickness</td><td>220 nm</td><td>Standard SOI device layer</td></tr>
+                        <tr><td>Waveguide Width</td><td>400 nm</td><td>Bus and ring waveguide width</td></tr>
+                        <tr><td>Ring Radius</td><td>4 µm</td><td>Center of waveguide to center of ring</td></tr>
+                        <tr><td>Ring–Bus Gap</td><td>150 nm</td><td>Evanescent coupling gap</td></tr>
+                        <tr><td>Center Wavelength</td><td>1.55 µm</td><td>Telecom C-band</td></tr>
+                        <tr><td>FSR</td><td>~20 nm</td><td>Observed from drop port spectrum</td></tr>
+                        <tr><td>Extinction Ratio</td><td>~25–27 dB</td><td>Through port resonance dip depth</td></tr>
+                        <tr><td>Simulation Tool</td><td>Tidy3D FDTD v2.10.1</td><td>Auto-grid, 15 steps/λ; z-symmetry applied</td></tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <!-- PROJECT 2: EDGE COUPLER -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Edge Coupler</h3>
+                <span class="project-tag">I/O Interface</span>
+            </div>
+            <div class="project-body">
+                <p class="project-description">
+                    Linear-taper waveguide coupler simulated on a silicon-on-insulator platform using Tidy3D FDTD.
+                    The waveguide narrows from 500 nm at the output to 350 nm at the input facet over a 5 µm taper,
+                    improving mode overlap with the input field. A broadband Gaussian pulse spanning
+                    760–840 nm (center 800 nm) drives a ModeSource, and power transmission into each of 5
+                    output modes is tracked via a ModeMonitor at the output. The simulation domain is terminated
+                    with PML on all sides with a 1 ps run time and 10⁻⁵ shutoff criterion.
+                </p>
+
+                <!-- Media Grid -->
+                <div class="media-grid">
+                    <div class="media-item">
+                        <img src="edge_coupler_geometry.png" alt="Tidy3D top-view XY geometry of edge coupler taper" style="width:100%;height:332px;object-fit:cover;display:block;">
+                        <div class="media-caption">Fig. 1 — Tidy3D top-view XY geometry: SiO₂ cladding (yellow), Si taper 350 → 500 nm over 5 µm (pink)</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="edge_coupler_modes.png" alt="Coupling efficiency vs wavelength for all 5 output modes" style="width:100%;height:332px;object-fit:contain;display:block;background:var(--surface-2);">
+                        <div class="media-caption">Fig. 2 — Coupling efficiency (dB) vs. wavelength (760–840 nm) for modes 0–4; mode 0 dominates near 0 dB</div>
+                    </div>
+                </div>
+
+                <!-- Specs Table -->
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Platform</td><td>SOI</td><td>SiO₂ cladding (n = 1.45), Si core (n = 2.0)</td></tr>
+                        <tr><td>Waveguide Thickness</td><td>200 nm</td><td>Slab bounds ±100 nm in z</td></tr>
+                        <tr><td>Input Width</td><td>350 nm</td><td>Narrow end at source facet</td></tr>
+                        <tr><td>Output Width</td><td>500 nm</td><td>Wide end at mode monitor</td></tr>
+                        <tr><td>Taper Length</td><td>5 µm</td><td>Linear width transition</td></tr>
+                        <tr><td>Wavelength Range</td><td>760 – 840 nm</td><td>80 nm bandwidth, 10 sample points</td></tr>
+                        <tr><td>Simulation Tool</td><td>Tidy3D FDTD</td><td>Auto-grid, 20 steps/λ; PML all sides</td></tr>
+                        <tr><td>Run Time</td><td>10 ps</td><td>Shutoff criterion 10⁻⁵</td></tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer id="contact">
+    <div class="footer-inner">
+        <span class="footer-name">Glenn Weil</span>
+    </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Simple image uploader for placeholders
+    function loadImage(input) {
+        i
